@@ -135,7 +135,7 @@ bool up_checkarch(FAR const Elf32_Ehdr *ehdr)
  *   Zero (OK) if the relocation was successful.  Otherwise, a negated errno
  *   value indicating the cause of the relocation failure.
  *
- ****************************************************************************/
+ **************************************************************************/
 
 int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t addr)
 {
@@ -148,6 +148,8 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 	 * information.
 	 */
 
+	lldbg("we are in up_relocate function now\n");
+        lldbg("hii there");
 	relotype = ELF32_R_TYPE(rel->r_info);
 	if (sym == NULL && relotype != R_ARM_NONE && relotype != R_ARM_V4BX) {
 		return -EINVAL;
@@ -182,6 +184,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 
 		*(uint32_t *)addr &= 0xff000000;
 		*(uint32_t *)addr |= offset & 0x00ffffff;
+		lldbg("relocated address for symbol at index %d in string table, symbol is  is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 
@@ -190,6 +193,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 		binfo("Performing ABS32 link at addr=%08lx [%08lx] to sym=%p st_value=%08lx\n", (long)addr, (long)(*(uint32_t *)addr), sym, (long)sym->st_value);
 
 		*(uint32_t *)addr += sym->st_value;
+		lldbg("relocated address for symbol at index %d in string table is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 
@@ -200,6 +204,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 		binfo("Performing TARGET2 link at addr=%08lx [%08lx] to sym=%p st_value=%08lx\n", (long)addr, (long)(*(uint32_t *)addr), sym, (long)sym->st_value);
 
 		*(uint32_t *)addr += sym->st_value - addr;
+		lldbg("relocated address for symbol at index %d in string table is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 #endif
@@ -325,6 +330,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 		/* Change instruction to 'mov pc, Rm' */
 
 		*(uint32_t *)addr |= 0x01a0f000;
+		lldbg("relocated address for symbol at index %d in string table is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 
@@ -333,6 +339,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 
 		offset = *(uint32_t *)addr + sym->st_value - addr;
 		*(uint32_t *)addr = offset & 0x7fffffff;
+		lldbg("relocated address for symbol at index %d in string table is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 
@@ -350,6 +357,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 
 		*(uint32_t *)addr &= 0xfff0f000;
 		*(uint32_t *)addr |= ((offset & 0xf000) << 4) | (offset & 0x0fff);
+		lldbg("relocated address for symbol at index %d in string table is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 
@@ -447,6 +455,7 @@ int up_relocate(FAR const Elf32_Rel *rel, FAR const Elf32_Sym *sym, uintptr_t ad
 
 		*(uint16_t *)addr &= 0xf800;
 		*(uint16_t *)addr |= offset & 0x7ff;
+		lldbg("relocated address for symbol at index %d in string table is %08lx\n",sym->st_name,(long)addr);
 	}
 	break;
 

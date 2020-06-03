@@ -235,7 +235,9 @@ int exec_module(FAR struct binary_s *binp)
 		ret = -ENOMEM;
 		goto errout_with_addrenv;
 	}
-
+	
+	binfo("Just before task_init() is called..\n");
+	
 	/* Initialize the task */
 
 	ret = task_init((FAR struct tcb_s *)tcb, binp->filename, binp->priority, stack, binp->stacksize, binp->entrypt, binp->argv);

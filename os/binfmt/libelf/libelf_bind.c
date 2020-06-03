@@ -172,6 +172,7 @@ static int elf_relocate(FAR struct elf_loadinfo_s *loadinfo, int relidx, FAR con
 	int ret = OK;
 	int i;
 
+	binfo("we are in elf_relocate function now\n");
 	/* Read the relocation table into memory */
 	elf_readreltab(loadinfo, relsec);
 
@@ -194,6 +195,7 @@ static int elf_relocate(FAR struct elf_loadinfo_s *loadinfo, int relidx, FAR con
 				goto ret_err;
 			}
 			prel = loadinfo->reltab + sizeof(Elf32_Rel) * i;
+			binfo("symbol at index %lu in symbol table is going to relocate\n",prel->r_info);
 		} else {
 			ret = elf_readrel(loadinfo, relsec, i, &rel);
 			if (ret < 0) {
@@ -217,6 +219,7 @@ static int elf_relocate(FAR struct elf_loadinfo_s *loadinfo, int relidx, FAR con
 				goto ret_err;
 			}
 			psym = loadinfo->symtab + sizeof(Elf32_Sym) * symidx;
+			binfo("%p is the pointer to symbol table\n",psym);
 		} else {
 			ret = elf_readsym(loadinfo, symidx, &sym);
 			if (ret < 0) {
@@ -255,9 +258,9 @@ static int elf_relocate(FAR struct elf_loadinfo_s *loadinfo, int relidx, FAR con
 		}
 
 		addr = dstsec->sh_addr + prel->r_offset;
-
+		binfo("relocated address for symbol %s is %lu\n",loadinfo->iobuffer, addr);
 		/* Now perform the architecture-specific relocation */
-
+		binfo("we are calling now up_relocate function for architecture specific relocation\n");
 		ret = up_relocate(prel, psym, addr);
 		if (ret < 0) {
 			berr("ERROR: Section %d reloc %d: Relocation failed: %d\n", relidx, i, ret);
@@ -315,7 +318,7 @@ int elf_bind(FAR struct elf_loadinfo_s *loadinfo, FAR const struct symtab_s *exp
 	/* Allocate an I/O buffer.  This buffer is used by elf_symname() to
 	 * accumulate the variable length symbol name.
 	 */
-
+      //berr("this is working");
 	ret = elf_allocbuffer(loadinfo);
 	if (ret < 0) {
 		berr("elf_allocbuffer failed: %d\n", ret);
@@ -354,8 +357,17 @@ int elf_bind(FAR struct elf_loadinfo_s *loadinfo, FAR const struct symtab_s *exp
 
 		/* Process the relocations by type */
 
+		binfo("section's sh_flag is %lu and sh_offset is %x\n",loadinfo->shdr[i].sh_flags, loadinfo->shdr[i].sh_ofset);
 		if (loadinfo->shdr[i].sh_type == SHT_REL) {
+			if((loadinfo->shdr[i].sh_info==1) && (loadinfo->shdr[i].sh_addralign==4))
+			{
+			    binfo("section's sh_flag is %lu\n",loadinfo->shdr[i].sh_flags);
+			    continue;
+			}
+			else
+			{
 			ret = elf_relocate(loadinfo, i, exports, nexports);
+			}
 		} else if (loadinfo->shdr[i].sh_type == SHT_RELA) {
 			ret = elf_relocateadd(loadinfo, i, exports, nexports);
 		}

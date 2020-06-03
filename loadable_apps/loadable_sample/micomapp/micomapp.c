@@ -39,19 +39,22 @@ int micomapp_main(int argc, char **argv)
 	int ret;
 #ifdef CONFIG_EXAMPLES_MICOM_TIMER_TEST
 	char *timer_args[TIMER_ARG_NUM];
-
+   	printf("just before this alloc_timer_args()\n");
 	ret = alloc_timer_args(timer_args);
+	printf("just after this alloc_timer_args()\n");
 	if (ret != OK) {
 		printf("TIMER TEST FAIL : out of memory.\n");
 		return ERROR;
 	}
-
+	printf("just before this timer_example_main()\n");
 	timer_example_main(TIMER_ARG_NUM, timer_args);
-
+	printf("just after this timer_example_main()\n");
 	free_timer_args(timer_args);
 #else /* CONFIG_EXAMPLES_MICOM_TIMER_TEST */
 #ifdef CONFIG_BINARY_MANAGER
+	printf("just before this binary_manager_notify_binary_started()\n");
 	ret = binary_manager_notify_binary_started();
+	printf("just after this binary_manager_notify_binary_started()\n");
 	if (ret < 0) {
 		printf("MICOM notify 'START' state FAIL\n");
 	}

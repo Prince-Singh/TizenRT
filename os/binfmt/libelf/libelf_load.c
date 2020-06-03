@@ -211,11 +211,14 @@ static inline int elf_loadfile(FAR struct elf_loadinfo_s *loadinfo)
 
 		if ((shdr->sh_flags & SHF_WRITE) != 0) {
 			pptr = &data;
+			binfo("this is data section with sh_flag = %lu\n",shdr->sh_flags);
 #ifdef CONFIG_OPTIMIZE_APP_RELOAD_TIME
 		} else if ((shdr->sh_flags & SHF_EXECINSTR) != 0) {
 			pptr = &text;
+			binfo("this is text section with sh_flag = %lu\n",shdr->sh_flags);
 		} else {
 			pptr = &ro;
+			binfo("this is RO section\n");
 		}
 #else
 		} else {

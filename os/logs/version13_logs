@@ -1,0 +1,318 @@
+
+test@ ~/workdir/demand_paging/TizenRT/os (my_work) $ 
+test@ ~/workdir/demand_paging/TizenRT/os (my_work) $ 
+test@ ~/workdir/demand_paging/TizenRT/os (my_work) $ sudo minicom -D /dev/ttyACM0
+
+
+Welcome to minicom 2.7
+
+OPTIONS: I18n 
+Compiled on Nov 15 2018, 20:18:47.
+Port /dev/ttyACM0, 15:04:24
+
+Press CTRL-A Z for help on special keys
+
+mpu_showtype: Unified MPU Regions: data=16 instr=0
+binary_manager_register_partition: [KERNEL] part num 0 size 262144
+binary_manager_register_partition: [USER1 : 1] micom size 262144 num 2
+binary_manager_register_partition: [USER1 : 2] micom size 262144 num 3
+binary_manager_register_partition: [USER2 : 1] wifi size 262144 num 4
+binary_manager_register_partition: [USER2 : 2] wifi size 262144 num 5
+binary_manager: Binary Manager STARTED
+binary_manager: Launch fault msg sender thread with pid 3
+binary_manager_loading: Execute loading thread with pid 4
+binary_manager: Loading thread with pid 4 will load binaries!
+binary_manager: Wait for message
+binary_manager_read_header: Binary header : 61 1 22140 micom 20190421 51200 2.0 0
+binary_manager_load_binary: Found valid header in part 0, version 20190421
+binary_manager_read_header: Invalid header data : headersize 17427, binsize 133361, ramsize -4
+binary_manager_load_binary: BIN[1] /dev/mtdblock2 22140 65
+load_absmodule: Loading /dev/mtdblock2
+elf_loadbinary: Loading file: /dev/mtdblock2
+elf_init: filename: /dev/mtdblock2 loadinfo: 0x80147934
+elf_cache_init: filfd: 3 offset: 65 filelen: 22140 compression_type: 0
+elf_cache_read: filfd: 3 readsize: 52 offset: 0
+elf_cache_update_blockcache_list: filfd: 3 block_number: 0
+elf_cache_read_block: filfd: 3 block_number: 0 binary_header_size: 65
+elf_cache_lseek_block: filfd: 3 actual_offset: 65 rpos: 65
+elf_cache_read_block: readsize: 2048 nbytes: 2048 rpos: 65
+elf_dumploadinfo: LOAD_INFO:
+elf_dumploadinfo:   textalloc:    00000000
+elf_dumploadinfo:   dataalloc:    00000000
+elf_dumploadinfo:   textsize:     0
+elf_dumploadinfo:   datasize:     0
+elf_dumploadinfo:   filelen:      22140
+elf_dumploadinfo:   filfd:        3
+elf_dumploadinfo:   symtabidx:    0
+elf_dumploadinfo:   strtabidx:    0
+elf_dumploadinfo: ELF Header:
+elf_dumploadinfo:   e_ident:      7f 45 4c 46
+elf_dumploadinfo:   e_type:       0001
+elf_dumploadinfo:   e_machine:    0028
+elf_dumploadinfo:   e_version:    00000001
+elf_dumploadinfo:   e_entry:      0000004d
+elf_dumploadinfo:   e_phoff:      0
+elf_dumploadinfo:   e_shoff:      21620
+elf_dumploadinfo:   e_flags:      05000000
+elf_dumploadinfo:   e_ehsize:     52
+elf_dumploadinfo:   e_phentsize:  0
+elf_dumploadinfo:   e_phnum:      0
+elf_dumploadinfo:   e_shentsize:  40
+elf_dumploadinfo:   e_shnum:      13
+elf_dumploadinfo:   e_shstrndx:   12
+elf_load: loadinfo: 0x80147934
+elf_cache_read: filfd: 3 readsize: 520 offset: 21620
+elf_cache_update_blockcache_list: filfd: 3 block_number: 10
+elf_cache_read_block: filfd: 3 block_number: 10 binary_header_size: 65
+elf_cache_lseek_block: filfd: 3 actual_offset: 20545 rpos: 20545
+elf_cache_read_block: readsize: 1660 nbytes: 1660 rpos: 20545
+elf_loadfile: Loaded sections:
+elf_loadfile: this is text section with sh_flag = 6
+elf_loadfile: 1. 00000000->20244000
+elf_loadfile: this is RO section
+elf_cache_read: filfd: 3 readsize: 1965 offset: 8296
+elf_cache_update_blockcache_list: filfd: 3 block_number: 4
+elf_cache_read_block: filfd: 3 block_number: 4 binary_header_size: 65
+elf_cache_lseek_block: filfd: 3 actual_offset: 8257 rpos: 8257
+elf_cache_read_block: readsize: 2048 nbytes: 2048 rpos: 8257
+elf_cache_update_blockcache_list: filfd: 3 block_number: 5
+elf_cache_read_block: filfd: 3 block_number: 5 binary_header_size: 65
+elf_cache_lseek_block: filfd: 3 actual_offset: 10305 rpos: 10305
+elf_cache_read_block: readsize: 2048 nbytes: 2048 rpos: 10305
+elf_loadfile: 4. 00002034->20241800
+elf_loadfile: this is data section with sh_flag = 3
+elf_cache_read: filfd: 3 readsize: 1 offset: 10261
+elf_cache_update_blockcache_list: filfd: 3 block_number: 5
+elf_loadfile: 5. 000027e1->80210000
+elf_loadfile: this is data section with sh_flag = 3
+elf_loadfile: 8. 000027e4->80210004
+elf_dumploadinfo: LOAD_INFO:
+elf_dumploadinfo:   textalloc:    20244000
+elf_dumploadinfo:   dataalloc:    80210000
+elf_dumploadinfo:   textsize:     16384
+elf_dumploadinfo:   datasize:     56
+elf_dumploadinfo:   filelen:      22140
+elf_dumploadinfo:   filfd:        3
+elf_dumploadinfo:   symtabidx:    0
+elf_dumploadinfo:   strtabidx:    0
+elf_dumploadinfo: ELF Header:
+elf_dumploadinfo:   e_ident:      7f 45 4c 46
+elf_dumploadinfo:   e_type:       0001
+elf_dumploadinfo:   e_machine:    0028
+elf_dumploadinfo:   e_version:    00000001
+elf_dumploadinfo:   e_entry:      0000004d
+elf_dumploadinfo:   e_phoff:      0
+elf_dumploadinfo:   e_shoff:      21620
+elf_dumploadinfo:   e_flags:      05000000
+elf_dumploadinfo:   e_ehsize:     52
+elf_dumploadinfo:   e_phentsize:  0
+elf_dumploadinfo:   e_phnum:      0
+elf_dumploadinfo:   e_shentsize:  40
+elf_dumploadinfo:   e_shnum:      13
+elf_dumploadinfo:   e_shstrndx:   12
+elf_dumploadinfo: Sections 0:
+elf_dumploadinfo:   sh_name:      00000000
+elf_dumploadinfo:   sh_type:      00000000
+elf_dumploadinfo:   sh_flags:     00000000
+elf_dumploadinfo:   sh_addr:      00000000
+elf_dumploadinfo:   sh_offset:    0
+elf_dumploadinfo:   sh_size:      0
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 0
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 1:
+elf_dumploadinfo:   sh_name:      0000001f
+elf_dumploadinfo:   sh_type:      00000001
+elf_dumploadinfo:   sh_flags:     00000006
+elf_dumploadinfo:   sh_addr:      20244000
+elf_dumploadinfo:   sh_offset:    52
+elf_dumploadinfo:   sh_size:      8244
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 4
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 2:
+elf_dumploadinfo:   sh_name:      0000001b
+elf_dumploadinfo:   sh_type:      00000009
+elf_dumploadinfo:   sh_flags:     00000040
+elf_dumploadinfo:   sh_addr:      00000000
+elf_dumploadinfo:   sh_offset:    18112
+elf_dumploadinfo:   sh_size:      3408
+elf_dumploadinfo:   sh_link:      10
+elf_dumploadinfo:   sh_info:      1
+elf_dumploadinfo:   sh_addralign: 4
+elf_dumploadinfo:   sh_entsize:   8
+elf_dumploadinfo: Sections 3:
+elf_dumploadinfo:   sh_name:      00000025
+elf_dumploadinfo:   sh_type:      00000001
+elf_dumploadinfo:   sh_flags:     00000001
+elf_dumploadinfo:   sh_addr:      00002034
+elf_dumploadinfo:   sh_offset:    8296
+elf_dumploadinfo:   sh_size:      0
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 4:
+elf_dumploadinfo:   sh_name:      00000033
+elf_dumploadinfo:   sh_type:      00000001
+elf_dumploadinfo:   sh_flags:     00000002
+elf_dumploadinfo:   sh_addr:      20241800
+elf_dumploadinfo:   sh_offset:    8296
+elf_dumploadinfo:   sh_size:      1965
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 5:
+elf_dumploadinfo:   sh_name:      0000003b
+elf_dumploadinfo:   sh_type:      00000001
+elf_dumploadinfo:   sh_flags:     00000003
+elf_dumploadinfo:   sh_addr:      80210000
+elf_dumploadinfo:   sh_offset:    10261
+elf_dumploadinfo:   sh_size:      1
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 6:
+elf_dumploadinfo:   sh_name:      00000041
+elf_dumploadinfo:   sh_type:      00000001
+elf_dumploadinfo:   sh_flags:     00000001
+elf_dumploadinfo:   sh_addr:      000027e2
+elf_dumploadinfo:   sh_offset:    10262
+elf_dumploadinfo:   sh_size:      0
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 7:
+elf_dumploadinfo:   sh_name:      00000048
+elf_dumploadinfo:   sh_type:      00000001
+elf_dumploadinfo:   sh_flags:     00000001
+elf_dumploadinfo:   sh_addr:      000027e2
+elf_dumploadinfo:   sh_offset:    10262
+elf_dumploadinfo:   sh_size:      0
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 8:
+elf_dumploadinfo:   sh_name:      0000004f
+elf_dumploadinfo:   sh_type:      00000008
+elf_dumploadinfo:   sh_flags:     00000003
+elf_dumploadinfo:   sh_addr:      80210004
+elf_dumploadinfo:   sh_offset:    10264
+elf_dumploadinfo:   sh_size:      52
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 4
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 9:
+elf_dumploadinfo:   sh_name:      00000054
+elf_dumploadinfo:   sh_type:      70000003
+elf_dumploadinfo:   sh_flags:     00000000
+elf_dumploadinfo:   sh_addr:      00000000
+elf_dumploadinfo:   sh_offset:    10264
+elf_dumploadinfo:   sh_size:      53
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 10:
+elf_dumploadinfo:   sh_name:      00000001
+elf_dumploadinfo:   sh_type:      00000002
+elf_dumploadinfo:   sh_flags:     00000000
+elf_dumploadinfo:   sh_addr:      00000000
+elf_dumploadinfo:   sh_offset:    10320
+elf_dumploadinfo:   sh_size:      5872
+elf_dumploadinfo:   sh_link:      11
+elf_dumploadinfo:   sh_info:      242
+elf_dumploadinfo:   sh_addralign: 4
+elf_dumploadinfo:   sh_entsize:   16
+elf_dumploadinfo: Sections 11:
+elf_dumploadinfo:   sh_name:      00000009
+elf_dumploadinfo:   sh_type:      00000003
+elf_dumploadinfo:   sh_flags:     00000000
+elf_dumploadinfo:   sh_addr:      00000000
+elf_dumploadinfo:   sh_offset:    16192
+elf_dumploadinfo:   sh_size:      1917
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_dumploadinfo: Sections 12:
+elf_dumploadinfo:   sh_name:      00000011
+elf_dumploadinfo:   sh_type:      00000003
+elf_dumploadinfo:   sh_flags:     00000000
+elf_dumploadinfo:   sh_addr:      00000000
+elf_dumploadinfo:   sh_offset:    21520
+elf_dumploadinfo:   sh_size:      100
+elf_dumploadinfo:   sh_link:      0
+elf_dumploadinfo:   sh_info:      0
+elf_dumploadinfo:   sh_addralign: 1
+elf_dumploadinfo:   sh_entsize:   0
+elf_bind: section's sh_flag is 64 and sh_offset is 46c0
+elf_bind: section's sh_flag is 64
+load_absmodule: Successfully loaded module /dev/mtdblock2
+dump_module: Module:
+dump_module:   filename:  /dev/mtdup_memfault: PANIC!!! Memory Management Fault:
+up_memfault:   CFAULTS: 00000001 MMFAR: 00000000
+up_assert: Assertion failed at file:armv7-m/up_memfault.c line: 143 task: micom
+up_dumpstate: sp:     202015a0
+up_dumpstate: IRQ stack:
+up_dumpstate:   base: 20201600
+up_dumpstate:   size: 00000800
+up_dumpstate:   used: 000000f8
+up_stackdump: 202015a0: 0000008f 80147dec 00000000 60009eaf 801468a0 6000a369 60009c6f 0000001
+up_stackdump: 202015c0: 00000000 60017091 20201608 00000001 00000000 00000000 00000000 0000000
+up_stackdump: 202015e0: 00000000 600041fd 00000000 802110c8 802110c8 6000424b 802110c8 60003dd
+up_dumpstate: sp:     80211198
+up_dumpstate: User stack:
+up_dumpstate:   base: 802111a0
+up_dumpstate:   size: 00000fe4
+up_dumpstate:   used: 000000dc
+up_stackdump: 80211180: 802111a4 802111a4 00000000 60005bf3 00000000 01000000 00000000 0000000
+up_registerdump: R0: 2024404d 00000001 802111a4 802111a4 2024404d 00000000 00000000 00000000
+up_registerdump: R8: 00000000 00000000 00000000 00000000 00000000 80211198 60005bf3 00000000
+up_registerdump: xPSR: 01000000 BASEPRI: 000000f0 CONTROL: 00000001
+up_registerdump: EXC_RETURN: fffffffd
+up_showtasks: *******************************************
+up_showtasks: List of all tasks in the system:
+up_showtasks: *******************************************
+up_showtasks:                            NAME |   PID |  PRI |    USED / TOTAL STACK
+up_showtasks: ---------------------------------------------------------------------
+up_taskdump:                       Idle Task |     0 |    0 |     776 /    1024
+up_taskdump:                          hpwork |     1 |  201 |     316 /    2028
+up_taskdump:                  binary_manager |     2 |  203 |     588 /    2020
+up_taskdump:               bm_faultmsgsender |     3 |  205 |     268 /     988
+up_taskdump:                       bm_loader |     4 |  200 |    1436 /    2020
+up_taskdump:                           micom |     5 |  220 |     220 /    4068
+mpu_show_regioninfo: *************************************************************************
+mpu_show_regioninfo: *REGION_NO.        BASE_ADDRESS        SIZE         REG            STATU*
+mpu_show_regioninfo: *************************************************************************
+mpu_show_regioninfo:        0           20244000            4000               0             2
+mpu_show_regioninfo:        1           20241800             800               0             2
+mpu_show_regioninfo:        2           80210000           10000               0             2
+mpu_show_regioninfo:        3                  0               0               0             0
+mpu_show_regioninfo:        4                  0               0               0             0
+mpu_show_regioninfo:        5                  0               0               0             0
+mpu_show_regioninfo:        6                  0               0               0             0
+mpu_show_regioninfo:        7                  0               0               0             0
+mpu_show_regioninfo: *************************************************************************
+
+
+
+
+CTRL-A Z for help | 115200 8N1 | NOR | Minicom 2.7 | VT102 | Offline | ttyACM0               
+
+
+test@ ~/workdir/demand_paging () $ ~/tools/g
+gcc-arm-none-eabi-6-2017-q1-update/
+gcc-arm-none-eabi-6-2017-q1-update-linux.tar.bz2
+gcc-arm-none-eabi-9-2019-q4-major/
+gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
+
+
+

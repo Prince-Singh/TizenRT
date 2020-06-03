@@ -375,6 +375,7 @@ static inline void task_dupdspace(FAR struct tcb_s *tcb)
 
 static int thread_schedsetup(FAR struct tcb_s *tcb, int priority, start_t start, CODE void *entry, uint8_t ttype)
 {
+	binfo("We are in task_schedsetup\n");
 	int ret;
 #ifdef CONFIG_APP_BINARY_SEPARATION
 	struct tcb_s *rtcb;
